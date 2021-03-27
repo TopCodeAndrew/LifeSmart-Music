@@ -1,10 +1,11 @@
 import { css } from 'styled-components'
 
 export const setColor = {
-    primaryColor: '#af9a70',
+    primaryColor: '#63b0df',
     mainWhite: '#fff',
     mainBlack: '#222',
-    mainGrey: '#ececec',
+    mainYellow: '#F9DC5C',
+    mainGrey: 'rgba(80,80,90)',
     lightGrey: '#f7f7f7'
 }
 

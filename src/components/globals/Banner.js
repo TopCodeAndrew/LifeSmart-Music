@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import { setColor, setRem, setLetterSpacing, setBorder, media } from '../../styles'
+import { setColor, setRem, setLetterSpacing, setBorder, setBackground, media } from '../../styles'
 
 const fadeIn = (start, point, end) => {
     const animation = keyframes`
@@ -20,10 +20,17 @@ const fadeIn = (start, point, end) => {
     return css`animation: ${animation} 3s ease-in-out`
 };
 
+const displayImg = (image) => {
+    return image ? <div className='logo-img'>
+        <img src={image} alt='about us' />
+    </div> : null
+};
 
-const Banner = ({ className, title, text, children, greeting }) => {
+
+const Banner = ({ className, title, text, children, greeting, img }) => {
     return (
         <div className={className}>
+            {displayImg(img)}
             <h1>{greeting}<span>{title}</span></h1>
             <div className='info'>
                 <p>{text}</p>
@@ -34,17 +41,25 @@ const Banner = ({ className, title, text, children, greeting }) => {
 }
 
 const BannerWrapper = styled(Banner)`
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(3px);
     text-align: center;
     padding: ${setRem(60)} ${setRem(32)};
     ${setLetterSpacing(3)};
     color:${setColor.mainWhite};
+    .logo-img{
+        img{
+        width: 300px;
+        }
+        margin-bottom: ${setRem(50)};
+
+    }
     h1{
         text-transform: capitalize;
-        font-size: ${setRem(48)};
-        color:${setColor.primaryColor};
+        font-size: ${setRem(36)};
+        color:${setColor.mainWhite};
         span{
-            color:${setColor.mainWhite}
+            color:${setColor.mainYellow}
         }
     }
     p{
@@ -53,7 +68,7 @@ const BannerWrapper = styled(Banner)`
     }
     ${media.tablet`
         width: 70vw;
-        ${setBorder({ width: '6px', color: setColor.primaryColor })};
+        ${setBorder({ width: '6px', color: setColor.mainWhite })};
         p{
             width: 75% ;
         }`} 
